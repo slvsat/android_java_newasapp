@@ -1,6 +1,7 @@
 package sattar.androidnewsapp;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ public class DBContext {
 
     public void SetNews(List<News> nws){
         this.news = nws;
-        (mContext).data = news;
+        mContext.setAdapter(news);
     }
 
     public DBContext(AppDatabase database, FragmentOne fragment){
@@ -63,6 +64,8 @@ public class DBContext {
 
         @Override
         protected Void doInBackground(News ... crNews) {
+            Log.e("News", crNews[0].getTitle());
+
             database.newsDao().insert(crNews);
             return null;
         }
@@ -85,7 +88,6 @@ public class DBContext {
 
         @Override
         protected Void doInBackground(News ... crNews) {
-
             database.newsDao().delete(crNews[0]);
             return null;
         }
