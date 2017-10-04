@@ -26,10 +26,11 @@ public class News {
     }
 
     @Ignore
-    public News(String title, String content, String imagePath) {
+    public News(String title, String content, String imagePath, String date) {
         this.title = title;
         this.content = content;
         this.imagePath = imagePath;
+        this.date = date;
     }
 
     public void setTitle(String title) {

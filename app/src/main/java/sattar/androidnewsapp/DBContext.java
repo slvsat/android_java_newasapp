@@ -31,6 +31,8 @@ public class DBContext {
 
     public void DeleteNewsAsync(News news) { new DeleteAsync().execute(news); }
 
+    public void DeleteAllAsync(){ new DeleteAllAsync().execute(); }
+
     private class DatabaseAsync extends AsyncTask<Void, Void, List<News>> {
 
         @Override
@@ -64,7 +66,7 @@ public class DBContext {
 
         @Override
         protected Void doInBackground(News ... crNews) {
-            Log.e("News", crNews[0].getTitle());
+            //Log.e("News", crNews[0].getTitle());
 
             database.newsDao().insert(crNews);
             return null;
@@ -97,6 +99,24 @@ public class DBContext {
             super.onPostExecute(aVoid);
 
             //To after addition operation here.
+        }
+    }
+
+    private class DeleteAllAsync extends AsyncTask<Void, Void, Void>{
+        @Override
+        protected void onPreExecute(){
+            super.onPreExecute();;
+        }
+
+        @Override
+        protected Void doInBackground(Void ... voids){
+            database.newsDao().nukeTable();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid){
+            super.onPostExecute(aVoid);
         }
     }
 }

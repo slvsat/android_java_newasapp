@@ -16,7 +16,7 @@ public interface NewsDao {
 
     // Удаление News из бд
     @Delete
-    void delete(News news);
+    void delete(News... news);
 
     // Получение всех News из бд
     @Query("SELECT * FROM news")
@@ -25,5 +25,8 @@ public interface NewsDao {
     // Получение всех News из бд с условием
     @Query("SELECT * FROM news WHERE id LIKE :id")
     List<News> getById(int id);
+
+    @Query("DELETE FROM news")
+    void nukeTable();
 
 }

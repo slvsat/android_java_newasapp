@@ -36,7 +36,7 @@ public class FragmentTwo extends Fragment {
 
         List<String> list = new ArrayList<>();
         list.add("First");
-        list.add("SEcond");
+        list.add("Second");
         list.add("Third");
         list.add("Fourth");
 
